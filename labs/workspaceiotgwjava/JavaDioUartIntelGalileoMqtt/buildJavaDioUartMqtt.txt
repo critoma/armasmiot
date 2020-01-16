@@ -1,0 +1,38 @@
+A. Terminal 1: Java DIO for temperature/humidity from IoT Board to Cloud
+
+# 1. set environment variables
+export PI_TOOLS=/usr
+export JAVA_HOME=/usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt
+#export ANT_HOME=/opt/apache/apache-ant-1.9.4
+export MYAPPPATH=/home/pi/workspacejava/JavaDioUartIntelGalileoMqtt
+#export DIO_HOME=/home/pi/deviceio/dev-26d04027287d
+#export PATH=.:$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
+export PATH=.:$JAVA_HOME/bin:$PATH
+
+# 2.1 Build DIO:
+#cd $DIO_HOME
+# make
+
+# cd ./samples/spi
+# ant
+
+
+# 2.2 Build IoT DCD - Directly Connected Device App
+cd $MYAPPPATH/src
+
+javac -classpath .:../libs/dio/dio.jar:../libs/lib_mqtt_mosquitto/org.eclipse.paho.client.mqttv3-1.0.2.jar -d ../build/classes mqtt_paho_eclipse_mosquitto/client/MqttPublishClient.java
+
+javac -classpath .:../libs/dio/dio.jar::../libs/lib_mqtt_mosquitto/org.eclipse.paho.client.mqttv3-1.0.2.jar -d ../build/classes com/oracle/dio/IoTUart2GalileoArduino.java
+
+javac -classpath .:../libs/dio/dio.jar:../libs/lib_mqtt_mosquitto/org.eclipse.paho.client.mqttv3-1.0.2.jar:../libs/lib_json_jersey/java-json.jar:../libs/lib_jcoap/ws4d-jcoap.jar -d ../build/classes com/oracle/dio/ProgMainDioUartGpio.java
+
+# 3. Archive - JAR
+cd $MYAPPPATH/build/classes
+jar -cvf $MYAPPPATH/dist/dio-uart-gpio-mqtt.jar com/oracle/* mqtt_paho_eclipse_mosquitto/* -C ../../config/ META-INF
+
+
+# 4. Run IoT DCD App
+# the PINs (18, 21 and 23) are the ones from ARM v7 Broadcom BCM2836 / 2835 
+cd $MYAPPPATH/dist
+sudo java -Djava.security.policy=../config/dio.policy -classpath .:../libs/dio/dio.jar:../libs/lib_mqtt_mosquitto/org.eclipse.paho.client.mqttv3-1.0.2.jar:./dio-uart-gpio-mqtt.jar -Djava.library.path=.:../libs/dio/ -Djdk.dio.registry=../config/dio.properties-raspberrypi com.oracle.dio.ProgMainDioUartGpio ttyACM0 21
+

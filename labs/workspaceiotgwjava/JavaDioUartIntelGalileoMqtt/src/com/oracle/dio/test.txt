@@ -1,0 +1,105 @@
+
+    //public void poll() {
+        //        iotnodeadapt.openUart();
+        /*
+         serialInputStream = Channels.newInputStream(this.uart);
+         serialOutputStream = Channels.newOutputStream(this.uart);
+         
+         serialBufferedReader = new BufferedReader(new InputStreamReader(serialInputStream));
+         serialBufferedWriter = new BufferedWriter(new OutputStreamWriter(serialOutputStream));
+         */
+        // use only ByteBuffer allocate direct: ByteBuffer - ByteBuffer.allocateDirect
+        
+	synchronized (myLock) {
+	{
+            try {
+                if (temp != null) {
+		    System.out.println("Command temp = "+cmdTempBuf.toString());
+                    //writePrompt(commandTemp);
+                    this.uart.write((ByteBuffer) ((ByteBuffer) cmdTempBuf.clear()).put(commandTemp.getBytes()).flip());
+                    /*
+		    
+                     serialBufferedWriter.write(commandTemp);
+                     serialBufferedWriter.flush();
+                     */
+                    temp = null;
+                }
+                
+                //temp = serialBufferedReader.readLine();
+                respSize = uart.read((ByteBuffer) resTempBuf.clear());
+                temp = toIntString(resTempBuf, respSize);
+                System.out.println("Temperature reading:" + temp);
+                //logger.fine("Temperature reading:" + temp);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
+            try {
+                if (ec != null) {
+                    //writePrompt(commandEc);
+                    this.uart.write((ByteBuffer) ((ByteBuffer) cmdTempBuf.clear()).put(commandEc.getBytes()).flip());
+                    /*
+                     serialBufferedWriter.write(commandEc);
+                     serialBufferedWriter.flush();
+                     */
+                    ec = null;
+                }
+                
+                /*ec = serialBufferedReader.readLine();*/
+                respSize = uart.read((ByteBuffer) resEcBuf.clear());
+                ec = toIntString(resEcBuf, respSize);
+                System.out.println("Electrical Conductivity reading:" + ec);
+                //logger.fine("Electrical Conductivity reading:" + ec);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
+            //try {
+            //if (temp != null && ec != null) {
+            //    processTemperatureAndEcReading(temp, ec);
+            //}
+            
+            //serialBufferedReader.close();
+            //serialBufferedWriter.close();
+            //serialInputStream.close();
+            //serialOutputStream.close();
+            //        } catch (IOException e) {
+            //            e.printStackTrace();
+            //        }
+            
+            
+            //
+            //        try {
+            //            iotnodeadapt.closeUart();
+            //        } catch (IOException e) {
+            //            e.printStackTrace();
+            //        }
+        }
+    }
+
+    //@Override
+    public Double getTemperature() {
+        return Double.parseDouble(this.temp);
+    }
+    
+    //@Override
+    public Double getEC() {
+        return Double.parseDouble(this.ec);
+    }
+    
+    public double convertCelsius2F(double tempCelsius) {
+		double tempF = tempCelsius * 2 + 22;
+		return tempF;
+    }
+
+    
+
+    private synchronized String toIntString(ByteBuffer buffer, int n) {
+       byte[] ret = new byte[buffer.remaining()];
+
+       for (int i = 0; i < buffer.remaining(); i++) {
+          ret[i] = (byte)(buffer.get(i) & 0xFF);
+       }
+
+       return new String(ret);
+    }

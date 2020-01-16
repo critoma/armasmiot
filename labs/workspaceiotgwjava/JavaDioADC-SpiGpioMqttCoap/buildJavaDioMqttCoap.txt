@@ -1,0 +1,39 @@
+A. Terminal 1: Java DIO for temperature/humidity from IoT Board to Cloud
+
+# 1. set environment variables
+export PI_TOOLS=/usr
+export JAVA_HOME=/usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt
+#export ANT_HOME=/opt/apache/apache-ant-1.9.4
+export MYAPPPATH=/home/pi/workspacejava/JavaDioADC-SpiGpioMqttCoap
+#export DIO_HOME=/home/pi/deviceio/dev-26d04027287d
+#export PATH=.:$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
+export PATH=.:$JAVA_HOME/bin:$PATH
+
+# 2.1 Build DIO:
+#cd $DIO_HOME
+# make
+
+# cd ./samples/spi
+# ant
+
+
+# 2.2 Build IoT DCD - Directly Connected Device App
+cd $MYAPPPATH/src
+javac -classpath .:../libs/dio/dio.jar -d ../build/classes com/oracle/dio/gpio/*.java
+javac -classpath .:../libs/dio/dio.jar -d ../build/classes com/oracle/dio/spi/*.java
+
+javac -classpath .:../libs/dio/dio.jar:../libs/lib_mqtt_mosquitto/org.eclipse.paho.client.mqttv3-1.0.2.jar -d ../build/classes mqtt_paho_eclipse_mosquitto/client/MqttPublishClient.java
+javac -classpath .:../libs/lib_jcoap/ws4d-jcoap.jar -d ../build/classes jcoap/client/BasicCoapClient.java
+
+javac -classpath .:../libs/dio/dio.jar:../libs/lib_mqtt_mosquitto/org.eclipse.paho.client.mqttv3-1.0.2.jar:../libs/lib_json_jersey/java-json.jar:../libs/lib_jcoap/ws4d-jcoap.jar -d ../build/classes com/oracle/dio/ProgMainDioSpiGpio.java
+
+# 3. Archive - JAR
+cd $MYAPPPATH/build/classes
+jar -cvf $MYAPPPATH/dist/dio-adc_spi-gpio-mqtt-coap.jar com/oracle/* mqtt_paho_eclipse_mosquitto/* jcoap/* -C ../../config/ META-INF
+
+
+# 4. Run IoT DCD App
+# the PINs (18, 21 and 23) are the ones from ARM v7 Broadcom BCM2836 / 2835 
+cd $MYAPPPATH/dist
+sudo java -Djava.security.policy=../config/dio.policy -classpath .:../libs/dio/dio.jar:../libs/lib_mqtt_mosquitto/org.eclipse.paho.client.mqttv3-1.0.2.jar:../libs/lib_json_jersey/java-json.jar:../libs/lib_jcoap/ws4d-jcoap.jar:../libs/lib_jcoap/log4j-1.2.16.jar:./dio-adc_spi-gpio-mqtt-coap.jar -Djava.library.path=.:../libs/dio/ -Djdk.dio.registry=../config/dio.properties-raspberrypi -Ddeviceacess.uart.prefix=/dev/ttyAMA com.oracle.dio.ProgMainDioSpiGpio 300 7 5 21
+

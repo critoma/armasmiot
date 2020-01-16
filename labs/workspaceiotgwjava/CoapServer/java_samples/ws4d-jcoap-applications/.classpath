@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ws4d-jcoap"/>
+	<classpathentry kind="lib" path="Referenced Libraries/commons-codec-1.4.jar"/>
+	<classpathentry kind="lib" path="Referenced Libraries/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="Referenced Libraries/ehcache-core-2.4.3.jar"/>
+	<classpathentry kind="lib" path="Referenced Libraries/httpasyncclient-4.0-alpha2.jar" sourcepath="doc/httpcomponents-asyncclient-4.0-alpha2-javadoc.zip">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/ws4d-jcoap-applications/doc/httpcomponents-asyncclient-4.0-alpha2-javadoc.zip!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Referenced Libraries/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="Referenced Libraries/slf4j-jdk14-1.6.1.jar"/>
+	<classpathentry kind="lib" path="/ws4d-jcoap/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="/ws4d-jcoap/lib/commons-cli-1.2.jar"/>
+	<classpathentry kind="lib" path="Referenced Libraries/httpclient-4.2.jar" sourcepath="doc/httpcomponents-client-4.2-javadoc.zip">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/ws4d-jcoap-applications/doc/httpcomponents-client-4.2-javadoc.zip!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Referenced Libraries/httpcore-4.2.jar" sourcepath="doc/httpcomponents-core-4.2-javadoc.zip">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/ws4d-jcoap-applications/doc/httpcomponents-core-4.2-javadoc.zip!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="Referenced Libraries/httpcore-nio-4.2.jar" sourcepath="doc/httpcomponents-core-4.2-javadoc.zip">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/ws4d-jcoap-applications/doc/httpcomponents-core-4.2-javadoc.zip!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

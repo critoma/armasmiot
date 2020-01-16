@@ -1,0 +1,43 @@
+
+_______________________________________________________________________________________________________
+
+
+A. Terminal 1: Java DIO for temperature/humidity from IoT Board (Digital - SPI & I2C) to Cloud
+
+
+# 1. set environment variables
+export PI_TOOLS=/usr
+export JAVA_HOME=/usr/lib/jvm/jdk-8-oracle-arm-vfp-hflt
+#export ANT_HOME=/opt/apache/apache-ant-1.9.4
+export MYAPPPATH=/home/pi/workspacejava/JavaDIO-DigitalI2CSpi/dio-digital
+#export DIO_HOME=/home/pi/deviceio/dev-26d04027287d
+#export PATH=.:$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
+export PATH=.:$JAVA_HOME/bin:$PATH
+
+
+# 2.1 Build DIO:
+#cd $DIO_HOME
+# make
+
+# cd ./samples/spi
+# ant
+
+
+# 2.2 Build IoT DCD - Directly Connected Device App
+cd $MYAPPPATH/src
+
+javac -classpath .:../libs/dio/dio.jar -d ../build/classes com/oracle/dio/gpio/*.java
+javac -classpath .:../libs/dio/dio.jar -d ../build/classes com/oracle/dio/DioSpiI2c.java
+javac -classpath .:../libs/dio/dio.jar -d ../build/classes com/oracle/iot/sample/DeviceClientSample.java
+
+
+# 3. Archive - JAR
+cd $MYAPPPATH/build/classes
+jar -cvf $MYAPPPATH/dist/dio-spi_i2c.jar com/oracle/* -C ../../config/ META-INF
+
+
+# 4. Run IoT DCD App
+# the PINs (18, 21 and 23) are the ones from ARM v7 Broadcom BCM2836 / 2835 
+cd $MYAPPPATH/dist
+sudo java -Djava.security.policy=../config/dio.policy -classpath .:./dio-spi_i2c.jar:../libs/dio/dio.jar -Djava.library.path=.:../libs/dio/ -Djdk.dio.registry=../config/dio.properties-raspberrypi -Ddeviceacess.uart.prefix=/dev/ttyAMA com.oracle.iot.sample.DeviceClientSample
+
