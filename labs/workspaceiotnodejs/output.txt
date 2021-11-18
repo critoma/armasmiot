@@ -1,2 +1,0 @@
-node.js is easy and simple 
- to learn!?

@@ -1,3 +1,0 @@
-This a text file
-that will be encrypted and compress
-from node.JS - ES 6.
