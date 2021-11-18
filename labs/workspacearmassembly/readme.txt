@@ -15,12 +15,9 @@
 # mv ~/.gdbinit ~/.gdbinit.original
 # echo source ~/.gdbinit-gef.py >> ~/.gdbinit
 
-
-## Examples of development and debugging of ARM Assembly on Raspberry Pi 3:
-# Install GEF as plugin for GDB
-# https://github.com/hugsy/gef
-# * Load/Store
-
+# ----------------
+# * Load/Store example:
+# cd ~/workspacearmassembly/arm32/p01_ldr_str
 # as -o p02ls.o p02ls.s
 # ld -o p02ls.elf32 p02ls.o
 # or (ld is used for label "_start" and gcc for label "main" in the link-editing phase)
@@ -38,8 +35,15 @@
 # x/w 0x10090
 # stepi
 # quit
+# ---------------------
+
 
 #########################################################################################
+## Examples of development and debugging of ARM Assembly on Raspberry Pi 3:
+#########################################################################################
+
+cd ~/workspacearmassembly/
+
 # This is for arm32
 cd arm32
 
