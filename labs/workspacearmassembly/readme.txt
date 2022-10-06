@@ -233,8 +233,14 @@ gcc -o out/p21_fcn_puts_c_hello.elf32 p21_fcn_puts_c_hello.c
 as p22_svc_irq_hello.s -o out/p22_svc_irq_hello.o
 gcc -o out/p22_svc_irq_hello.elf32 out/p22_svc_irq_hello.o
 # ./out/p22_svc_irq_hello.elf32
-# gdb out/p22_svc_irq_hello.elf32
 
+# in one ssh window: ssh stud@aimctoma.go.ro 7722 # run gdb:
+# gdb out/p22_svc_irq_hello.elf32
+# break main
+# run > gdb1.txt
+
+# in another ssh window: ssh stud@aimctoma.go.ro 7722 # run tail:
+# stud@raspberrypi3:~/asmarm/test $ tail -f gdb1.txt
 
 rm -rf out
 cd .. 
