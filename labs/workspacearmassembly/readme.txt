@@ -25,14 +25,22 @@
 # or directly:
 # gcc -o p02ls.elf32 p02ls.s
 
+# in gef> ... :
 # gdb -q ./p02ls
 # disassemble _start
 # br _start
 # run
+# x/2w $pc
+# x/2w $pc+12
 # nexti 1
+# x/2w $pc+12
 # nexti 1
 # nexti 1
 # x/w 0x10090
+
+# x/2xw 0x21024
+# x/8xb 0x21024
+
 # stepi
 # quit
 # ---------------------
