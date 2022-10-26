@@ -1,5 +1,5 @@
 /* for (int i = 0; i < 100; i++) a[i] =  i; */
-@ use as for assebling and gcc for link-editing
+@ use as for assembling and gcc for link-editing
 
 .text
 
