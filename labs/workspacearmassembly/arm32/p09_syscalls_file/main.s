@@ -9,6 +9,7 @@
 @
 
 .include "fileio.s"
+.include "uppermacro.s"
 
 .equ	BUFFERLEN, 250
 
@@ -43,8 +44,9 @@ loop:	readFile	R8, buffer, BUFFERLEN
 	@LDR		R1, =outBuf
 	@BL		toupper
 
-	@writeFile	R9, outBuf, R10
-        writeFile R9, buffer, R10
+        toupper buffer, outBuf
+	writeFile	R9, outBuf, R10
+        @writeFile R9, buffer, R10
 
 	CMP		R10, #BUFFERLEN
 	BEQ		loop
@@ -67,4 +69,3 @@ inpErr: .asciz	"Failed to open input file.\n"
 inpErrsz: .word  .-inpErr 
 outErr:	.asciz	"Failed to open output file.\n"
 outErrsz: .word	.-outErr
-
