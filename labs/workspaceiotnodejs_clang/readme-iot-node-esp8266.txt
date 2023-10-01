@@ -21,6 +21,7 @@ sudo python /opt/software/esptool/esptool.py --port /dev/ttyUSB0 -b 115200 write
 
 ###############################
 # MAKE SURE: Espruino IDE has communication BAUD RATE 115200
+# https://www.espruino.com/ide/
 
 // EX.01 - Hello World
 console.log("Hello...");
