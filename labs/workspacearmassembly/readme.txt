@@ -44,7 +44,17 @@
 # stepi
 # quit
 # ---------------------
-
+# alternative to gef is the latest gdb in Raspbian OS year 2023:
+# besides the standard gdb commands => gdb help:
+# br main
+# run
+# tui enable
+# layout split
+# layout regs
+# focus asm
+# stepi 1, x/8xb 0x21024, etc....
+# tui disable
+### --------
 
 #########################################################################################
 ## Examples of development and debugging of ARM Assembly on Raspberry Pi 3:
