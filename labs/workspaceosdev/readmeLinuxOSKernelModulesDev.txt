@@ -14,6 +14,7 @@ lsmod
 # uname -r
 # sudo apt-get install build-essential linux-headers-$(uname -r)
 # sudo apt-get install build-essential linux-headers-5.19.0-1024-aws
+# in RPi3: sudo apt-get install dkms build-essential && sudo apt-get install raspberrypi-kernel-headers
 
 
 mkdir -p ~/embedOS/hello-module
