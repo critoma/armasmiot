@@ -226,6 +226,7 @@ gcc -o out/p21_fcn_puts_c_hello.elf32 p21_fcn_puts_c_hello.c
 # #include <unistd.h>
 # ssize_t write(int fd, const void *buf, size_t count); => fd (#1 - stdout) -> r0; *buf -> r1; count -> r2 and sys call constant 4 in r7
 # grep write /usr/include/arm-linux-gnueabihf/asm/unistd-common.h 
+# for RPi3 with 2023 Raspian OS from May: nano /usr/include/arm-linux-gnueabihf/asm/unistd-oabi.h 
 
 # => ... #define __NR_write (__NR_SYSCALL_BASE + 4)
 # ARM sys call constant is 4 for the "write" function
