@@ -3,7 +3,7 @@
 # 
 # for Dockerized Qemu: 
 # Make sure you have Docker installed in Windows 10/11 - on MacOS and Linux is easier:
-# 1. Turn Windows features on or off - FULL Hyper-V & Windows Hypervisor Platform
+# 1. Turn Windows features on or off - Virtual Machine Platform & FULL Hyper-V & Windows Hypervisor Platform
 # 2. Command line:
 wsl.exe --set-version Ubuntu 2
 wsl --set-default-version 2
@@ -17,7 +17,10 @@ wsl -l -v
 # Resources -> WSL Integration - check enable integration and turn (updated) Ubuntu ON => Apply & Restart
 # (Optional) RESTART MACHINE!!!
 # https://interrupt.memfault.com/blog/emulating-raspberry-pi-in-qemu | https://github.com/memfault/interrupt/blob/master/example/emulating-raspberry-pi-in-qemu/Dockerfile
-# https://hub.docker.com/r/stawiski/qemu-raspberrypi-3b | docker pull stawiski/qemu-raspberrypi-3b | docker pull stawiski/qemu-raspberrypi-3b:2023-05-03-raspios-bullseye-arm64
+# https://hub.docker.com/r/stawiski/qemu-raspberrypi-3b | docker pull stawiski/qemu-raspberrypi-3b | 
+# docker pull stawiski/qemu-raspberrypi-3b:2023-05-03-raspios-bullseye-arm64
+# docker run -it --rm -p 2222:2222 stawiski/qemu-raspberrypi-3b:2023-05-03-raspios-bullseye-arm64
+# ssh -p 2222 pi@localhost
 #
 #########################################################################################
 # Examples for ARM Assembly 32 bits and 64 bits
