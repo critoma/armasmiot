@@ -74,7 +74,7 @@ wsl -l -v
 # stepi
 # quit
 # ---------------------
-# alternative to gef is the latest gdb in Raspbian OS year 2023:
+# alternative to gef is the latest gdb in Linux Debian/Ubuntu/Raspbian OS year 2023:
 # besides the standard gdb commands => gdb help:
 # br main
 # run
