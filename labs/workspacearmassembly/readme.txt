@@ -1,7 +1,17 @@
 #########################################################################################
 # if not real RPi board: https://azeria-labs.com/emulate-raspberry-pi-with-qemu/ | https://interrupt.memfault.com/blog/emulating-raspberry-pi-in-qemu
-# 
-# for Dockerized Qemu: 
+# docker run -it -p 5022:5022 ghcr.io/carlosperate/qemu-rpi-os-lite:buster-latest --name MyQemuRPi3_01
+# or
+# #### docker run -it -p 5022:5022 ghcr.io/carlosperate/qemu-rpi-os-lite:buster-latest
+# docker run -it -p 5022:5022 --name MyQemuRPi3_01 critoma/qemu-rpi-os-lite:buster-latest
+# ssh -p 5022 pi@127.0.0.1
+#
+# # Add Visual Studio Code (code) on Mac OS
+# export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+# # Add Docker Desktop for Mac (docker)
+# export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
+#
+# in exceptional cases - not installed Docker or wrong install in Windows 10/11 for Dockerized Qemu: 
 # Make sure you have Docker installed in Windows 10/11 - on MacOS and Linux is easier:
 # 1. Turn Windows features on or off - Virtual Machine Platform & FULL Hyper-V & Windows Hypervisor Platform
 # 2. Command line:
@@ -17,9 +27,8 @@ wsl -l -v
 # Resources -> WSL Integration - check enable integration and turn (updated) Ubuntu ON => Apply & Restart
 # (Optional) RESTART MACHINE!!!
 # https://interrupt.memfault.com/blog/emulating-raspberry-pi-in-qemu | https://github.com/memfault/interrupt/blob/master/example/emulating-raspberry-pi-in-qemu/Dockerfile
-# https://hub.docker.com/r/stawiski/qemu-raspberrypi-3b | docker pull stawiski/qemu-raspberrypi-3b | 
-# docker pull stawiski/qemu-raspberrypi-3b:2023-05-03-raspios-bullseye-arm64
-# docker run -it --rm -p 2222:2222 stawiski/qemu-raspberrypi-3b:2023-05-03-raspios-bullseye-arm64
+# https://hub.docker.com/r/stawiski/qemu-raspberrypi-3b | docker pull stawiski/qemu-raspberrypi-3b | docker pull stawiski/qemu-raspberrypi-3b:2023-05-03-raspios-bullseye-arm64
+# ####docker run -it --rm -p 2222:2222 stawiski/qemu-raspberrypi-3b:2023-05-03-raspios-bullseye-arm64
 # in terminal of docker container:
 # 
 # bash
