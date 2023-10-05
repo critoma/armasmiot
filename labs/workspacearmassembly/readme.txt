@@ -1,16 +1,16 @@
 #########################################################################################
 # if not real RPi board: https://azeria-labs.com/emulate-raspberry-pi-with-qemu/ | https://interrupt.memfault.com/blog/emulating-raspberry-pi-in-qemu
-# docker run -it -p 5022:5022 ghcr.io/carlosperate/qemu-rpi-os-lite:buster-latest --name MyQemuRPi3_01
-# or
-# #### docker run -it -p 5022:5022 ghcr.io/carlosperate/qemu-rpi-os-lite:buster-latest
+# #####
 # docker run -it -p 5022:5022 --name MyQemuRPi3_01 critoma/qemu-rpi-os-lite:buster-latest
 # ssh -p 5022 pi@127.0.0.1
-#
+# #####
+# # // Credit to -> docker run -it -p 5022:5022 ghcr.io/carlosperate/qemu-rpi-os-lite:buster-latest
+# ###
 # # Add Visual Studio Code (code) on Mac OS
 # export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 # # Add Docker Desktop for Mac (docker)
 # export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
-#
+# ###
 # in exceptional cases - not installed Docker or wrong install in Windows 10/11 for Dockerized Qemu: 
 # Make sure you have Docker installed in Windows 10/11 - on MacOS and Linux is easier:
 # 1. Turn Windows features on or off - Virtual Machine Platform & FULL Hyper-V & Windows Hypervisor Platform
