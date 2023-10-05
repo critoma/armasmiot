@@ -20,6 +20,12 @@ wsl -l -v
 # https://hub.docker.com/r/stawiski/qemu-raspberrypi-3b | docker pull stawiski/qemu-raspberrypi-3b | 
 # docker pull stawiski/qemu-raspberrypi-3b:2023-05-03-raspios-bullseye-arm64
 # docker run -it --rm -p 2222:2222 stawiski/qemu-raspberrypi-3b:2023-05-03-raspios-bullseye-arm64
+# in terminal of docker container:
+# 
+# bash
+# apt-get update
+# apt-get install nano
+# apt-get install build-essential
 # ssh -p 2222 pi@localhost
 #
 #########################################################################################
