@@ -1,5 +1,6 @@
 #########################################################################################
 # if not real RPi board: https://azeria-labs.com/emulate-raspberry-pi-with-qemu/ | https://interrupt.memfault.com/blog/emulating-raspberry-pi-in-qemu
+# https://github.com/lukechilds/dockerpi/tree/master
 # #####
 # docker run -it -p 5022:5022 --name MyQemuRPi3_01 critoma/qemu-rpi-os-lite:buster-latest
 # ssh -p 5022 pi@127.0.0.1
