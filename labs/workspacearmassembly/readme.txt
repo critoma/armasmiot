@@ -367,7 +367,7 @@ cd ..
 cd p11_shellcode_syscalls_sock
 mkdir out
 
-gcc -o system.elf32 ./out/system.c
+gcc -o ./out/system.elf32 system.c
 strace -f -v ./out/system.elf32
 grep execve /usr/include/arm-linux-gnueabihf/asm/unistd-common.h 
 # #define __NR_execve (__NR_SYSCALL_BASE+ 11)
