@@ -522,6 +522,8 @@ gcc -o out/virus.elf32 virus.c
 
 cd out
 ./virus.elf32
+# xor:
+./virus.elf32 &
 cd ..
 
 # check the syscalls from dir.c for searching files in ARM assembly by using syscalls
