@@ -518,6 +518,8 @@ gcc -o out/ahost_svc_irq_hello004.elf32 ../hosts/ahost_svc_irq_hello004.c
 
 # check macrodef / constant for the virus size from the virus in conjuction with ls -l out
 gcc -o out/virus.elf32 virus.c
+# gcc -z execstack -o out/virus.elf32 virus_shell.c
+
 cd out
 ./virus.elf32
 cd ..
