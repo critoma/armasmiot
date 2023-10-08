@@ -369,7 +369,8 @@ mkdir out
 
 gcc -o ./out/system.elf32 system.c
 strace -f -v ./out/system.elf32
-grep execve /usr/include/arm-linux-gnueabihf/asm/unistd-common.h 
+# grep execve /usr/include/arm-linux-gnueabihf/asm/unistd-common.h 
+grep execve /usr/include/arm-linux-gnueabihf/asm/unistd-common-oabi.h
 # #define __NR_execve (__NR_SYSCALL_BASE+ 11)
 # int  execve(const char *filename, char *const argv [], char *const envp[]);
 # => create a syscall in ARM Assembly with 11 in r7 and then SWI / SVC 0/1
