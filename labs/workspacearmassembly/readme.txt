@@ -397,8 +397,9 @@ hexdump -v -e '"\\""x" 1/1 "%02x" ""' out/execve3.bin
 # https://azeria-labs.com/tcp-bind-shell-in-assembly-arm-32-bit/
 # STAGE ONE: SYSTEM FUNCTIONS AND THEIR PARAMETERS
 
-cat /usr/include/arm-linux-gnueabihf/asm/unistd-common.h | grep socket
+# cat /usr/include/arm-linux-gnueabihf/asm/unistd-common.h | grep socket
 # cat /usr/include/arm-linux-gnueabihf/asm/unistd.h | grep socket
+cat /usr/include/arm-linux-gnueabihf/asm/unistd-oabi.h | grep socket
 # =>
 # #define __NR_socketcall             (__NR_SYSCALL_BASE+102)
 # #define __NR_socket                 (__NR_SYSCALL_BASE+281)
