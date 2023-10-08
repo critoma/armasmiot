@@ -385,7 +385,9 @@ as execve2.s -o out/execve2.o
 objdump -d out/execve2.o
 
 as execve3.s -o out/execve3.o && ld -N out/execve3.o -o out/execve3.elf32
+objdump -d out/execve3.o
 ./out/execve3.elf32
+# exit # from new shell
 
 objcopy -O binary out/execve3.elf32 out/execve3.bin 
 hexdump -v -e '"\\""x" 1/1 "%02x" ""' out/execve3.bin 
