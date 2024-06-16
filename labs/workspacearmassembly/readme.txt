@@ -609,3 +609,6 @@ cd ..
 
 #########################################################################################
 
+For RISC-V Assembly please see:
+https://github.com/andrescv/jupiter?tab=readme-ov-file
+
