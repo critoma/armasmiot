@@ -87,6 +87,7 @@ setInterval(function() {
 
 // EX. 05 - tcp server on port 1234
 // access from RPi browser - e.g.: http://192.168.1.250:1234
+// or from MacOS terminal: curl --http0.9 -X GET http://192.168.97.68:1234
 
 var wifi = require("Wifi");
 
