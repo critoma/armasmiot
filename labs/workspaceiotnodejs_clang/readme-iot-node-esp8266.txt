@@ -1,3 +1,5 @@
+// access from browser: https://www.espruino.com/ide/
+
 *. Erase firmware & Flash the Espruino firmware from Linux/Raspberry Pi 
 to ESP8266, after USB connection between boards (also have driver USB to UART – no need in Rpi 3 - http://www.silabs.com/products/mcu/pages/usbtouartbridgevcpdrivers.aspx):
 RPi: sudo esptool.py --port /dev/ttyUSB0 erase_flash
